@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #7AB51D;
+            --primary-orange: #F7941D;
+            --dark-green: #5a8a15;
+            --light-green: #e8f5d9;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            max-width: 450px;
+            width: 100%;
+            margin: 20px;
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .login-header i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: var(--primary-orange);
+        }
+        
+        .login-header h2 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .login-body {
+            padding: 40px 30px;
+        }
+        
+        .form-label {
+            color: var(--dark-green);
+            font-weight: 600;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 0.2rem rgba(122, 181, 29, 0.25);
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            border: none;
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(122, 181, 29, 0.4);
+            color: white;
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+        }
+        
+        .input-group-text {
+            background-color: var(--light-green);
+            border-right: none;
+            color: var(--dark-green);
+        }
+        
+        .form-control {
+            border-left: none;
+        }
+        
+        .form-control:focus + .input-group-text {
+            border-color: var(--primary-green);
+        }
+        
+        .forgot-password {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .forgot-password:hover {
+            color: var(--primary-orange);
+            text-decoration: underline;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        .register-link a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .register-link a:hover {
+            color: var(--primary-orange);
+            text-decoration: underline;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+        
+        .alert {
+            border-radius: 10px;
+        }
+        
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .logo-placeholder i {
+            font-size: 40px;
+            color: var(--primary-green);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo-placeholder">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <h2>Sistema de Compras</h2>
+            <p class="mb-0">Faça login para continuar</p>
+        </div>
+        
+        <div class="login-body">
+            <div id="alertContainer"></div>
+            
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Lembrar-me</label>
+                </div>
+                
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-login">
+                        <i class="fas fa-sign-in-alt me-2"></i>Entrar
+                    </button>
+                </div>
+                
+                <div class="text-center">
+                    <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+                </div>
+                
+                <div class="register-link">
+                    Não tem uma conta? <a href="#">Cadastre-se</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sistema de autenticação com localStorage
+        const AuthSystem = {
+            // Salvar dados do usuário logado
+            login: function(email, password, rememberMe) {
+                const userData = {
+                    email: email,
+                    loginTime: new Date().toISOString(),
+                    isAuthenticated: true
+                };
+                
+                // Salva no localStorage ou sessionStorage
+                if (rememberMe) {
+                    localStorage.setItem('userAuth', JSON.stringify(userData));
+                } else {
+                    sessionStorage.setItem('userAuth', JSON.stringify(userData));
+                }
+                
+                return true;
+            },
+            
+            // Verificar se usuário está logado
+            isLoggedIn: function() {
+                const localAuth = localStorage.getItem('userAuth');
+                const sessionAuth = sessionStorage.getItem('userAuth');
+                
+                if (localAuth || sessionAuth) {
+                    return JSON.parse(localAuth || sessionAuth);
+                }
+                return null;
+            },
+            
+            // Fazer logout
+            logout: function() {
+                localStorage.removeItem('userAuth');
+                sessionStorage.removeItem('userAuth');
+            },
+            
+            // Pegar dados do usuário
+            getUserData: function() {
+                return this.isLoggedIn();
+            }
+        };
+        
+        // Função para mostrar alertas
+        function showAlert(message, type = 'success') {
+            const alertContainer = document.getElementById('alertContainer');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type} alert-dismissible fade show`;
+            alert.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            alertContainer.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+        
+        // Verificar se já está logado ao carregar a página
+        window.addEventListener('DOMContentLoaded', function() {
+            const userData = AuthSystem.isLoggedIn();
+            if (userData) {
+                showAlert(`Bem-vindo de volta, ${userData.email}!`, 'info');
+                // Aqui você pode redirecionar para o dashboard
+                 setTimeout(() => window.location.href = 'dashboard.html', 2000);
+            }
+        });
+        
+        // Handler do formulário de login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            // Validação básica (aqui você faria a validação real com backend)
+            if (email && password) {
+                // Simula validação de credenciais
+                if (password.length >= 6) {
+                    // Faz o login
+                    AuthSystem.login(email, password, rememberMe);
+                    
+                    showAlert('Login realizado com sucesso!', 'success');
+                    
+                    // Redireciona após 1.5 segundos
+                    setTimeout(() => {
+                        // window.location.href = 'dashboard.html';
+                        console.log('Usuário logado:', AuthSystem.getUserData());
+                        showAlert('Redirecionamento desabilitado no mockup. Dados salvos no navegador!', 'info');
+                    }, 1500);
+                } else {
+                    showAlert('A senha deve ter pelo menos 6 caracteres!', 'danger');
+                }
+            } else {
+                showAlert('Por favor, preencha todos os campos!', 'warning');
+            }
+        });
+        
+        // Disponibilizar AuthSystem globalmente para outras páginas
+        window.AuthSystem = AuthSystem;
+        
+        // Log para debug
+        console.log('Sistema de autenticação carregado!');
+        console.log('Use AuthSystem.isLoggedIn() para verificar login');
+        console.log('Use AuthSystem.getUserData() para pegar dados do usuário');
+        console.log('Use AuthSystem.logout() para fazer logout');
+    </script>
+</body>
+</html>

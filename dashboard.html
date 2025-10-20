@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #7AB51D;
+            --primary-orange: #F7941D;
+            --dark-green: #5a8a15;
+            --light-green: #e8f5d9;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .top-header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-circle i {
+            font-size: 24px;
+            color: var(--primary-green);
+        }
+        
+        .breadcrumb-custom {
+            background: white;
+            padding: 12px 0;
+            margin: 0;
+            border-bottom: 3px solid var(--primary-green);
+        }
+        
+        .breadcrumb-custom a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-custom a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .nav-tabs-custom {
+            border-bottom: 3px solid var(--primary-green);
+            margin-bottom: 30px;
+        }
+        
+        .nav-tabs-custom .nav-link {
+            color: #666;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            background: #e9ecef;
+            margin-right: 5px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-tabs-custom .nav-link:hover {
+            color: var(--primary-green);
+            background: #dee2e6;
+        }
+        
+        .nav-tabs-custom .nav-link.active {
+            color: white;
+            background: var(--primary-green);
+            border: none;
+        }
+        
+        .metric-card {
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            height: 100%;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .metric-card h5 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding-bottom: 10px;
+        }
+        
+        .metric-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-number {
+            font-size: 28px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .card-requisicao {
+            background: #ffe6e6;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .card-requisicao .metric-number {
+            color: #dc3545;
+        }
+        
+        .card-cotacao {
+            background: #fffde6;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .card-cotacao .metric-number {
+            color: #d39e00;
+        }
+        
+        .card-pedido {
+            background: #e6f7f7;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .card-pedido .metric-number {
+            color: #117a8b;
+        }
+        
+        .card-fornecedor {
+            background: #e6f0ff;
+            border-left: 5px solid #007bff;
+        }
+        
+        .card-fornecedor .metric-number {
+            color: #0056b3;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+        
+        .btn-logout {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-logout:hover {
+            background: #d67a0f;
+            transform: translateY(-2px);
+            color: white;
+        }
+        
+        .clickable {
+            cursor: pointer;
+        }
+        
+        .clickable:hover .metric-number {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="top-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="logo-section">
+                        <div class="logo-circle">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 class="mb-0">Sistema de Compras</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="d-flex justify-content-end align-items-center gap-3">
+                        <div class="user-info">
+                            <div class="user-avatar" id="userAvatar">U</div>
+                            <span id="userEmail">usuário@email.com</span>
+                        </div>
+                        <button class="btn btn-logout" onclick="logout()">
+                            <i class="fas fa-sign-out-alt me-2"></i>Sair
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-custom">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <!-- Tabs -->
+        <ul class="nav nav-tabs nav-tabs-custom" id="dashboardTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="principal-tab" data-bs-toggle="tab" data-bs-target="#principal" type="button" role="tab">
+                    Principal
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="gerencial-tab" data-bs-toggle="tab" data-bs-target="#gerencial" type="button" role="tab">
+                    Gerencial
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="bi-tab" data-bs-toggle="tab" data-bs-target="#bi" type="button" role="tab">
+                    BI
+                </button>
+            </li>
+        </ul>
+        
+        <!-- Tab Content -->
+        <div class="tab-content" id="dashboardTabContent">
+            <!-- Principal Tab -->
+            <div class="tab-pane fade show active" id="principal" role="tabpanel">
+                <div class="row">
+                    <!-- Item de Requisição -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="metric-card card-requisicao">
+                            <h5><i class="fas fa-file-alt me-2"></i>Item de Requisição</h5>
+                            <div class="metric-item clickable" onclick="window.location.href='compra.html'">
+                                <span class="metric-number">20</span>
+                                <span class="metric-label">Pendente de compra</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-number">28</span>
+                                <span class="metric-label">Em cotação</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cotação -->
+                    
+                                       
+                    
+                    
+                </div>
+            </div>
+            
+            <!-- Gerencial Tab -->
+            <div class="tab-pane fade" id="gerencial" role="tabpanel">
+                <div class="alert alert-info">
+                    <i class="fas fa-chart-line me-2"></i>
+                    <strong>Área Gerencial</strong> - Conteúdo a ser desenvolvido
+                </div>
+            </div>
+            
+            <!-- BI Tab -->
+            <div class="tab-pane fade" id="bi" role="tabpanel">
+                <div class="alert alert-info">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    <strong>Business Intelligence</strong> - Conteúdo a ser desenvolvido
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sistema de autenticação (mesmo do login)
+        const AuthSystem = {
+            isLoggedIn: function() {
+                const localAuth = localStorage.getItem('userAuth');
+                const sessionAuth = sessionStorage.getItem('userAuth');
+                
+                if (localAuth || sessionAuth) {
+                    return JSON.parse(localAuth || sessionAuth);
+                }
+                return null;
+            },
+            
+            logout: function() {
+                localStorage.removeItem('userAuth');
+                sessionStorage.removeItem('userAuth');
+            },
+            
+            getUserData: function() {
+                return this.isLoggedIn();
+            }
+        };
+        
+        // Verificar autenticação ao carregar
+        window.addEventListener('DOMContentLoaded', function() {
+            const userData = AuthSystem.isLoggedIn();
+            
+            if (!userData) {
+                // Se não estiver logado, redireciona para login
+                alert('Você precisa fazer login primeiro!');
+                // window.location.href = 'login.html';
+            } else {
+                // Exibe informações do usuário
+                document.getElementById('userEmail').textContent = userData.email;
+                const initials = userData.email.substring(0, 2).toUpperCase();
+                document.getElementById('userAvatar').textContent = initials;
+            }
+        });
+        
+        // Função de logout
+        function logout() {
+            if (confirm('Deseja realmente sair?')) {
+                AuthSystem.logout();
+                alert('Logout realizado com sucesso!');
+                // window.location.href = 'login.html';
+                console.log('Usuário deslogado');
+            }
+        }
+        
+        // Disponibilizar globalmente
+        window.AuthSystem = AuthSystem;
+        
+        console.log('Dashboard carregado!');
+        console.log('Usuário logado:', AuthSystem.getUserData());
+    </script>
+</body>
+</html>
