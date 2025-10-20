@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendente de Compra - Sistema de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #7AB51D;
+            --primary-orange: #F7941D;
+            --dark-green: #5a8a15;
+            --light-green: #e8f5d9;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .top-header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-circle i {
+            font-size: 24px;
+            color: var(--primary-green);
+        }
+        
+        .breadcrumb-custom {
+            background: white;
+            padding: 12px 0;
+            margin: 0;
+            border-bottom: 3px solid var(--primary-green);
+        }
+        
+        .breadcrumb-custom a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-custom a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark-green);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .btn-search {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 8px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-search:hover {
+            background: var(--dark-green);
+            color: white;
+        }
+        
+        .btn-export {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-weight: 600;
+        }
+        
+        .btn-export:hover {
+            background: #d67a0f;
+            color: white;
+        }
+        
+        .action-buttons {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .btn-action {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 8px 20px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn-gerar-cotacao {
+            background: #0d6efd;
+            color: white;
+        }
+        
+        .btn-alteracao-lote {
+            background: #ffc107;
+            color: #000;
+        }
+        
+        .btn-devolver {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .btn-encerrar {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-importar {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .status-tabs {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .status-tab {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .status-tab.active {
+            color: white;
+        }
+        
+        .tab-compra {
+            background: #28a745;
+            color: white;
+        }
+        
+        .tab-imediato {
+            background: #ff69b4;
+            color: white;
+        }
+        
+        .tab-contrato {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .tab-tomada {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .table-container {
+            background: white;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        
+        .table-custom {
+            margin: 0;
+            font-size: 13px;
+        }
+        
+        .table-custom thead {
+            background: #f8f9fa;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .table-custom th {
+            font-weight: 600;
+            color: var(--dark-green);
+            border-bottom: 2px solid var(--primary-green);
+            padding: 12px 8px;
+            white-space: nowrap;
+        }
+        
+        .table-custom tbody tr {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .table-custom tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .table-custom tbody tr.selected {
+            background: #d4edda;
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .status-r {
+            background: #ff9800;
+        }
+        
+        .req-link {
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .req-link:hover {
+            text-decoration: underline;
+        }
+        
+        .anexo-icon {
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+        
+        .anexo-icon:hover {
+            color: var(--primary-orange);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+        
+        .btn-logout {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .btn-logout:hover {
+            background: #d67a0f;
+            color: white;
+        }
+        
+        .btn-back {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .btn-back:hover {
+            background: #5a6268;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="top-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="logo-section">
+                        <div class="logo-circle">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 class="mb-0">Sistema de Compras AGT</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="d-flex justify-content-end align-items-center gap-3">
+                        <div class="user-info">
+                            <div class="user-avatar" id="userAvatar">U</div>
+                            <span id="userEmail">usuário@email.com</span>
+                        </div>
+                        <button class="btn btn-back" onclick="voltarDashboard()">
+                            <i class="fas fa-arrow-left me-2"></i>Voltar
+                        </button>
+                        <button class="btn btn-logout" onclick="logout()">
+                            <i class="fas fa-sign-out-alt me-2"></i>Sair
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-custom">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#" onclick="voltarDashboard()">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" onclick="voltarDashboard()">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pendente de Compra</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <!-- Filtros -->
+        <div class="filter-section">
+            <div class="row g-3">
+                <div class="col-md-2">
+                    <label class="filter-label">Data de criação</label>
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+                <div class="col-md-2">
+                    <label class="filter-label">até</label>
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+                <div class="col-md-2">
+                    <label class="filter-label">Prioridade</label>
+                    <select class="form-select form-select-sm">
+                        <option value="">Todas</option>
+                        <option value="alta">Alta</option>
+                        <option value="normal">Normal</option>
+                        <option value="baixa">Baixa</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="filter-label">Objeto de custo</label>
+                    <input type="text" class="form-control form-control-sm">
+                </div>
+                <div class="col-md-2">
+                    <label class="filter-label">Família</label>
+                    <input type="text" class="form-control form-control-sm">
+                </div>
+                <div class="col-md-2">
+                    <label class="filter-label">Req. ERP</label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Códigos separados por vírgula">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label class="filter-label">Grupo de compra</label>
+                    <select class="form-select form-select-sm">
+                        <option value="">Todos</option>
+                        <option value="grupo1">Grupo 1</option>
+                        <option value="grupo2">Grupo 2</option>
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button class="btn btn-search me-2">
+                        <i class="fas fa-search me-2"></i>Pesquisar
+                    </button>
+                    <button class="btn btn-export">
+                        <i class="fas fa-download me-2"></i>Exibir
+                    </button>
+                    <select class="form-select form-select-sm ms-2" style="max-width: 200px;">
+                        <option>Todos os registros</option>
+                        <option>Selecionados</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Botões de Ação -->
+        <div class="action-buttons">
+            <button class="btn btn-action btn-gerar-cotacao" onclick="gerarCotacao()">
+                <i class="fas fa-file-invoice me-2"></i>Gerar cotação
+            </button>
+            <button class="btn btn-action btn-alteracao-lote">
+                <i class="fas fa-edit me-2"></i>Alteração em lote
+            </button>
+            <button class="btn btn-action btn-devolver">
+                <i class="fas fa-undo me-2"></i>Devolver para correção
+            </button>
+            <button class="btn btn-action btn-encerrar">
+                <i class="fas fa-times-circle me-2"></i>Encerrar
+            </button>
+            <button class="btn btn-action btn-importar">
+                <i class="fas fa-upload me-2"></i>Importar Requisição do ERP
+            </button>
+        </div>
+        
+        <!-- Status Tabs -->
+        <div class="status-tabs">
+            <div class="status-tab tab-compra active">
+                <i class="fas fa-check me-2"></i>Compra (42)
+            </div>
+            <div class="status-tab tab-imediato">
+                Imediato (1)
+            </div>
+            <div class="status-tab tab-contrato">
+                Contrato (1)
+            </div>
+            <div class="status-tab tab-tomada">
+                Tomada de preço (0)
+            </div>
+        </div>
+        
+        <!-- Tabela -->
+        <div class="table-container">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>Situação</th>
+                        <th>Req. ERP</th>
+                        <th>Prioridade</th>
+                        <th>Cód. prod.</th>
+                        <th>Produto/Serviço</th>
+                        <th>Dt. criação</th>
+                        <th>Qt. Requisita</th>
+                        <th>Família</th>
+                        <th>Anexos</th>
+                        <th>Observação</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    
+                    <tr data-id="2">
+                        <td><input type="checkbox" class="row-checkbox"></td>
+                        <td><span class="status-badge status-r">R</span></td>
+                        <td><a href="#" class="req-link">151.110278</a></td>
+                        <td>Normal</td>
+                        <td>0147024</td>
+                        <td>SOBREMESA - SORVETE</td>
+                        <td>08/10/2025<br>13:12</td>
+                        <td>100,000</td>
+                        <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                        <td><i class="fas fa-paperclip anexo-icon"></i> Solicitação Tha</td>
+                        <td></td>
+                    </tr>
+                    <tr data-id="1">
+                        <td><input type="checkbox" class="row-checkbox"></td>
+                        <td><span class="status-badge status-r">R</span></td>
+                        <td><a href="#" class="req-link">151.110043</a></td>
+                        <td>Normal</td>
+                        <td>0002950</td>
+                        <td>VERDURA - alface (KG)</td>
+                        <td>30/10/2025<br>14:00</td>
+                        <td>4,000</td>
+                        <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                        <td><i class="fas fa-paperclip anexo-icon"></i> REQUISIÇÃO</td>
+                        <td><i class="fas fa-file-alt text-success"></i> Solicitação tha</td>
+                    </tr>
+                    <tr data-id="3">
+                        <td><input type="checkbox" class="row-checkbox"></td>
+                        <td><span class="status-badge status-r">R</span></td>
+                        <td><a href="#" class="req-link">151.110367</a></td>
+                        <td>Normal</td>
+                        <td>0147024</td>
+                        <td>SOBREMESA - SORVETE</td>
+                        <td>10/10/2025<br>12:07</td>
+                        <td>70,000</td>
+                        <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                        <td><i class="fas fa-paperclip anexo-icon"></i> Colonia Guach</td>
+                        <td></td>
+                    </tr>
+                    <tr data-id="4">
+                        <td><input type="checkbox" class="row-checkbox"></td>
+                        <td><span class="status-badge status-r">R</span></td>
+                        <td><a href="#" class="req-link">151.110385</a></td>
+                        <td>Normal</td>
+                        <td>0180210</td>
+                        <td>TESOURA PODA MANUAL CERCA VIVA CABO DE MADEIRA LAMINA 12" TRAMONTINA 78330/125</td>
+                        <td>13/10/2025<br>16:57</td>
+                        <td>2,000</td>
+                        <td>FERRAMENTAS NA</td>
+                        <td><i class="fas fa-paperclip anexo-icon"></i> Será usado em</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sistema de autenticação
+        const AuthSystem = {
+            isLoggedIn: function() {
+                const localAuth = localStorage.getItem('userAuth');
+                const sessionAuth = sessionStorage.getItem('userAuth');
+                
+                if (localAuth || sessionAuth) {
+                    return JSON.parse(localAuth || sessionAuth);
+                }
+                return null;
+            },
+            
+            logout: function() {
+                localStorage.removeItem('userAuth');
+                sessionStorage.removeItem('userAuth');
+            },
+            
+            getUserData: function() {
+                return this.isLoggedIn();
+            }
+        };
+        
+        // Verificar autenticação
+        window.addEventListener('DOMContentLoaded', function() {
+            const userData = AuthSystem.isLoggedIn();
+            
+            if (!userData) {
+                alert('Você precisa fazer login primeiro!');
+            } else {
+                document.getElementById('userEmail').textContent = userData.email;
+                const initials = userData.email.substring(0, 2).toUpperCase();
+                document.getElementById('userAvatar').textContent = initials;
+            }
+        });
+        
+        // Seleção de linhas
+        const tableBody = document.getElementById('tableBody');
+        const selectAll = document.getElementById('selectAll');
+        
+        tableBody.addEventListener('click', function(e) {
+            const row = e.target.closest('tr');
+            if (row && !e.target.matches('input[type="checkbox"]') && !e.target.matches('a')) {
+                row.classList.toggle('selected');
+                const checkbox = row.querySelector('.row-checkbox');
+                checkbox.checked = row.classList.contains('selected');
+            }
+        });
+        
+        // Checkbox individual
+        document.querySelectorAll('.row-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const row = this.closest('tr');
+                if (this.checked) {
+                    row.classList.add('selected');
+                } else {
+                    row.classList.remove('selected');
+                }
+            });
+        });
+        
+        // Selecionar todos
+        selectAll.addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('.row-checkbox');
+            const rows = document.querySelectorAll('#tableBody tr');
+            
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.checked = this.checked;
+                if (this.checked) {
+                    rows[index].classList.add('selected');
+                } else {
+                    rows[index].classList.remove('selected');
+                }
+            });
+        });
+        
+        // Função gerar cotação
+        function gerarCotacao() {
+            const selected = document.querySelectorAll('#tableBody tr.selected');
+            if (selected.length === 0) {
+                alert('Selecione pelo menos um item para gerar cotação!');
+                return;
+            }
+            alert(`${selected.length} item(ns) selecionado(s) para cotação!`);
+            // Aqui você navegaria para a próxima tela
+        }
+        
+        // Função logout
+        function logout() {
+            if (confirm('Deseja realmente sair?')) {
+                AuthSystem.logout();
+                alert('Logout realizado com sucesso!');
+                console.log('Usuário deslogado');
+            }
+        }
+        
+        // Voltar ao dashboard
+        function voltarDashboard() {
+            //alert('Voltando ao Dashboard...');
+             window.location.href = 'dashboard.html';
+        }
+        
+        console.log('Tela de Pendente de Compra carregada!');
+        console.log('Clique nas linhas para selecioná-las');
+    </script>
+</body>
+</html>
