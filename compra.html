@@ -456,78 +456,676 @@
         
         <!-- Tabela -->
         <div class="table-container">
-            <table class="table table-custom table-hover">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox" id="selectAll"></th>
-                        <th>Situação</th>
-                        <th>Req. ERP</th>
-                        <th>Prioridade</th>
-                        <th>Cód. prod.</th>
-                        <th>Produto/Serviço</th>
-                        <th>Dt. criação</th>
-                        <th>Qt. Requisita</th>
-                        <th>Família</th>
-                        <th>Anexos</th>
-                        <th>Observação</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                    
-                    <tr data-id="2">
-                        <td><input type="checkbox" class="row-checkbox"></td>
-                        <td><span class="status-badge status-r">R</span></td>
-                        <td><a href="#" class="req-link">151.110278</a></td>
-                        <td>Normal</td>
-                        <td>0147024</td>
-                        <td>SOBREMESA - SORVETE</td>
-                        <td>08/10/2025<br>13:12</td>
-                        <td>100,000</td>
-                        <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
-                        <td><i class="fas fa-paperclip anexo-icon"></i> Solicitação Tha</td>
-                        <td></td>
-                    </tr>
-                    <tr data-id="1">
-                        <td><input type="checkbox" class="row-checkbox"></td>
-                        <td><span class="status-badge status-r">R</span></td>
-                        <td><a href="#" class="req-link">151.110043</a></td>
-                        <td>Normal</td>
-                        <td>0002950</td>
-                        <td>VERDURA - alface (KG)</td>
-                        <td>30/10/2025<br>14:00</td>
-                        <td>4,000</td>
-                        <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
-                        <td><i class="fas fa-paperclip anexo-icon"></i> REQUISIÇÃO</td>
-                        <td><i class="fas fa-file-alt text-success"></i> Solicitação tha</td>
-                    </tr>
-                    <tr data-id="3">
-                        <td><input type="checkbox" class="row-checkbox"></td>
-                        <td><span class="status-badge status-r">R</span></td>
-                        <td><a href="#" class="req-link">151.110367</a></td>
-                        <td>Normal</td>
-                        <td>0147024</td>
-                        <td>SOBREMESA - SORVETE</td>
-                        <td>10/10/2025<br>12:07</td>
-                        <td>70,000</td>
-                        <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
-                        <td><i class="fas fa-paperclip anexo-icon"></i> Colonia Guach</td>
-                        <td></td>
-                    </tr>
-                    <tr data-id="4">
-                        <td><input type="checkbox" class="row-checkbox"></td>
-                        <td><span class="status-badge status-r">R</span></td>
-                        <td><a href="#" class="req-link">151.110385</a></td>
-                        <td>Normal</td>
-                        <td>0180210</td>
-                        <td>TESOURA PODA MANUAL CERCA VIVA CABO DE MADEIRA LAMINA 12" TRAMONTINA 78330/125</td>
-                        <td>13/10/2025<br>16:57</td>
-                        <td>2,000</td>
-                        <td>FERRAMENTAS NA</td>
-                        <td><i class="fas fa-paperclip anexo-icon"></i> Será usado em</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+    <table class="table table-custom table-hover">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="selectAll"></th>
+                <th>Situação</th>
+                <th>Req. ERP</th>
+                <th>Prioridade</th>
+                <th>Cód. prod.</th>
+                <th>Produto/Serviço</th>
+                <th>Dt. criação</th>
+                <th>Qt. Requisita</th>
+                <th>Família</th>
+                <th>Anexos</th>
+                <th>Observação</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr data-id="1">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110001</a></td>
+                <td>Normal</td>
+                <td>0001001</td>
+                <td>ARROZ BRANCO TIPO 1 (KG)</td>
+                <td>22/10/2025<br>08:30</td>
+                <td>500,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Solicitação Tha</td>
+                <td></td>
+            </tr>
+            <tr data-id="2">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110002</a></td>
+                <td>Alta</td>
+                <td>0001002</td>
+                <td>FEIJÃO PRETO TIPO 1 (KG)</td>
+                <td>22/10/2025<br>09:15</td>
+                <td>300,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> REQUISIÇÃO</td>
+                <td><i class="fas fa-file-alt text-success"></i> Urgente</td>
+            </tr>
+            <tr data-id="3">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110003</a></td>
+                <td>Normal</td>
+                <td>0001003</td>
+                <td>ÓLEO DE SOJA 900ML</td>
+                <td>22/10/2025<br>10:00</td>
+                <td>150,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Colonia Guach</td>
+                <td></td>
+            </tr>
+            <tr data-id="4">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110004</a></td>
+                <td>Urgente</td>
+                <td>0001004</td>
+                <td>AÇÚCAR CRISTAL (KG)</td>
+                <td>22/10/2025<br>10:45</td>
+                <td>200,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Será usado em</td>
+                <td><i class="fas fa-file-alt text-success"></i> Aprovado</td>
+            </tr>
+            <tr data-id="5">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110005</a></td>
+                <td>Normal</td>
+                <td>0001005</td>
+                <td>CAFÉ TORRADO E MOÍDO (KG)</td>
+                <td>22/10/2025<br>11:20</td>
+                <td>50,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Urgente Prod</td>
+                <td></td>
+            </tr>
+            <tr data-id="6">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110006</a></td>
+                <td>Alta</td>
+                <td>0001006</td>
+                <td>LEITE INTEGRAL UHT 1L</td>
+                <td>22/10/2025<br>13:00</td>
+                <td>400,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Aprovado Gest</td>
+                <td></td>
+            </tr>
+            <tr data-id="7">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110007</a></td>
+                <td>Normal</td>
+                <td>0001007</td>
+                <td>PÃO FRANCÊS (KG)</td>
+                <td>22/10/2025<br>14:30</td>
+                <td>100,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Orçamento Ane</td>
+                <td><i class="fas fa-file-alt text-success"></i> Verificar</td>
+            </tr>
+            <tr data-id="8">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110008</a></td>
+                <td>Baixa</td>
+                <td>0001008</td>
+                <td>FRANGO CONGELADO (KG)</td>
+                <td>21/10/2025<br>08:00</td>
+                <td>250,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Cotação 3 Forn</td>
+                <td></td>
+            </tr>
+            <tr data-id="9">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110009</a></td>
+                <td>Urgente</td>
+                <td>0001009</td>
+                <td>CARNE BOVINA - ALCATRA (KG)</td>
+                <td>21/10/2025<br>09:30</td>
+                <td>180,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Especificação</td>
+                <td><i class="fas fa-file-alt text-success"></i> Urgente</td>
+            </tr>
+            <tr data-id="10">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110010</a></td>
+                <td>Normal</td>
+                <td>0001010</td>
+                <td>TOMATE (KG)</td>
+                <td>21/10/2025<br>10:15</td>
+                <td>80,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Manual Técnico</td>
+                <td></td>
+            </tr>
+            <tr data-id="11">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110011</a></td>
+                <td>Alta</td>
+                <td>0001011</td>
+                <td>CEBOLA (KG)</td>
+                <td>21/10/2025<br>11:00</td>
+                <td>120,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Solicitação Tha</td>
+                <td></td>
+            </tr>
+            <tr data-id="12">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110012</a></td>
+                <td>Normal</td>
+                <td>0001012</td>
+                <td>BATATA (KG)</td>
+                <td>21/10/2025<br>13:45</td>
+                <td>200,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> REQUISIÇÃO</td>
+                <td><i class="fas fa-file-alt text-success"></i> Aprovado</td>
+            </tr>
+            <tr data-id="13">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110013</a></td>
+                <td>Normal</td>
+                <td>0001013</td>
+                <td>MACARRÃO ESPAGUETE 500G</td>
+                <td>21/10/2025<br>15:20</td>
+                <td>300,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Colonia Guach</td>
+                <td></td>
+            </tr>
+            <tr data-id="14">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110014</a></td>
+                <td>Urgente</td>
+                <td>0001014</td>
+                <td>MOLHO DE TOMATE 340G</td>
+                <td>20/10/2025<br>08:30</td>
+                <td>150,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Será usado em</td>
+                <td></td>
+            </tr>
+            <tr data-id="15">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110015</a></td>
+                <td>Normal</td>
+                <td>0001015</td>
+                <td>SAL REFINADO 1KG</td>
+                <td>20/10/2025<br>09:00</td>
+                <td>50,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Urgente Prod</td>
+                <td><i class="fas fa-file-alt text-success"></i> Verificar</td>
+            </tr>
+            <tr data-id="16">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110016</a></td>
+                <td>Alta</td>
+                <td>0001016</td>
+                <td>FARINHA DE TRIGO (KG)</td>
+                <td>20/10/2025<br>10:30</td>
+                <td>100,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Aprovado Gest</td>
+                <td></td>
+            </tr>
+            <tr data-id="17">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110017</a></td>
+                <td>Normal</td>
+                <td>0001017</td>
+                <td>MARGARINA 500G</td>
+                <td>20/10/2025<br>11:15</td>
+                <td>80,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Orçamento Ane</td>
+                <td></td>
+            </tr>
+            <tr data-id="18">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110018</a></td>
+                <td>Baixa</td>
+                <td>0001018</td>
+                <td>DETERGENTE LÍQUIDO 500ML</td>
+                <td>20/10/2025<br>14:00</td>
+                <td>200,000</td>
+                <td>PRODUTOS DE LIMPEZA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Cotação 3 Forn</td>
+                <td><i class="fas fa-file-alt text-success"></i> Cotação</td>
+            </tr>
+            <tr data-id="19">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110019</a></td>
+                <td>Urgente</td>
+                <td>0001019</td>
+                <td>SABÃO EM PÓ 1KG</td>
+                <td>19/10/2025<br>08:00</td>
+                <td>150,000</td>
+                <td>PRODUTOS DE LIMPEZA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Especificação</td>
+                <td></td>
+            </tr>
+            <tr data-id="20">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110020</a></td>
+                <td>Normal</td>
+                <td>0001020</td>
+                <td>ÁGUA SANITÁRIA 1L</td>
+                <td>19/10/2025<br>09:30</td>
+                <td>100,000</td>
+                <td>PRODUTOS DE LIMPEZA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Manual Técnico</td>
+                <td></td>
+            </tr>
+            <tr data-id="21">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110021</a></td>
+                <td>Alta</td>
+                <td>0001021</td>
+                <td>DESINFETANTE 2L</td>
+                <td>19/10/2025<br>10:45</td>
+                <td>80,000</td>
+                <td>PRODUTOS DE LIMPEZA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Solicitação Tha</td>
+                <td><i class="fas fa-file-alt text-success"></i> Urgente</td>
+            </tr>
+            <tr data-id="22">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110022</a></td>
+                <td>Normal</td>
+                <td>0001022</td>
+                <td>PAPEL HIGIÊNICO FOLHA DUPLA</td>
+                <td>19/10/2025<br>13:00</td>
+                <td>500,000</td>
+                <td>PRODUTOS DE LIMPEZA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> REQUISIÇÃO</td>
+                <td></td>
+            </tr>
+            <tr data-id="23">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110023</a></td>
+                <td>Normal</td>
+                <td>0001023</td>
+                <td>PAPEL TOALHA</td>
+                <td>19/10/2025<br>14:30</td>
+                <td>300,000</td>
+                <td>PRODUTOS DE LIMPEZA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Colonia Guach</td>
+                <td><i class="fas fa-file-alt text-success"></i> Aprovado</td>
+            </tr>
+            <tr data-id="24">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110024</a></td>
+                <td>Urgente</td>
+                <td>0001024</td>
+                <td>SABONETE 90G</td>
+                <td>18/10/2025<br>08:15</td>
+                <td>400,000</td>
+                <td>PRODUTOS DE HIGIENE</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Será usado em</td>
+                <td></td>
+            </tr>
+            <tr data-id="25">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110025</a></td>
+                <td>Normal</td>
+                <td>0001025</td>
+                <td>SHAMPOO 350ML</td>
+                <td>18/10/2025<br>09:00</td>
+                <td>200,000</td>
+                <td>PRODUTOS DE HIGIENE</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Urgente Prod</td>
+                <td></td>
+            </tr>
+            <tr data-id="26">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110026</a></td>
+                <td>Alta</td>
+                <td>0001026</td>
+                <td>ÁLCOOL GEL 70% 500ML</td>
+                <td>18/10/2025<br>10:30</td>
+                <td>250,000</td>
+                <td>PRODUTOS DE HIGIENE</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Aprovado Gest</td>
+                <td><i class="fas fa-file-alt text-success"></i> Verificar</td>
+            </tr>
+            <tr data-id="27">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110027</a></td>
+                <td>Normal</td>
+                <td>0001027</td>
+                <td>LUVA DE LÁTEX TAM. G</td>
+                <td>18/10/2025<br>13:15</td>
+                <td>100,000</td>
+                <td>EQUIPAMENTOS DE PROTEÇÃO</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Orçamento Ane</td>
+                <td></td>
+            </tr>
+            <tr data-id="28">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110028</a></td>
+                <td>Baixa</td>
+                <td>0001028</td>
+                <td>MÁSCARA DESCARTÁVEL</td>
+                <td>18/10/2025<br>15:00</td>
+                <td>500,000</td>
+                <td>EQUIPAMENTOS DE PROTEÇÃO</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Cotação 3 Forn</td>
+                <td></td>
+            </tr>
+            <tr data-id="29">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110029</a></td>
+                <td>Urgente</td>
+                <td>0001029</td>
+                <td>ENXADA COM CABO</td>
+                <td>17/10/2025<br>08:00</td>
+                <td>15,000</td>
+                <td>FERRAMENTAS NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Especificação</td>
+                <td><i class="fas fa-file-alt text-success"></i> Urgente</td>
+            </tr>
+            <tr data-id="30">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110030</a></td>
+                <td>Normal</td>
+                <td>0001030</td>
+                <td>PÁ QUADRADA COM CABO</td>
+                <td>17/10/2025<br>09:30</td>
+                <td>20,000</td>
+                <td>FERRAMENTAS NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Manual Técnico</td>
+                <td></td>
+            </tr>
+            <tr data-id="31">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110031</a></td>
+                <td>Alta</td>
+                <td>0001031</td>
+                <td>RASTELO 16 DENTES</td>
+                <td>17/10/2025<br>10:15</td>
+                <td>12,000</td>
+                <td>FERRAMENTAS NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Solicitação Tha</td>
+                <td></td>
+            </tr>
+            <tr data-id="32">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110032</a></td>
+                <td>Normal</td>
+                <td>0001032</td>
+                <td>CARRINHO DE MÃO 60L</td>
+                <td>17/10/2025<br>13:00</td>
+                <td>8,000</td>
+                <td>FERRAMENTAS NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> REQUISIÇÃO</td>
+                <td><i class="fas fa-file-alt text-success"></i> Aprovado</td>
+            </tr>
+            <tr data-id="33">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110033</a></td>
+                <td>Normal</td>
+                <td>0001033</td>
+                <td>MANGUEIRA 1/2 POLEGADA 20M</td>
+                <td>17/10/2025<br>14:45</td>
+                <td>25,000</td>
+                <td>FERRAMENTAS NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Colonia Guach</td>
+                <td></td>
+            </tr>
+            <tr data-id="34">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110034</a></td>
+                <td>Urgente</td>
+                <td>0001034</td>
+                <td>REGADOR 10L</td>
+                <td>16/10/2025<br>08:30</td>
+                <td>10,000</td>
+                <td>FERRAMENTAS NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Será usado em</td>
+                <td></td>
+            </tr>
+            <tr data-id="35">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110035</a></td>
+                <td>Normal</td>
+                <td>0001035</td>
+                <td>ADUBO ORGÂNICO 5KG</td>
+                <td>16/10/2025<br>09:00</td>
+                <td>200,000</td>
+                <td>INSUMOS AGRÍCOLAS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Urgente Prod</td>
+                <td><i class="fas fa-file-alt text-success"></i> Verificar</td>
+            </tr>
+            <tr data-id="36">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110036</a></td>
+                <td>Alta</td>
+                <td>0001036</td>
+                <td>SEMENTE DE MILHO (KG)</td>
+                <td>16/10/2025<br>10:30</td>
+                <td>500,000</td>
+                <td>INSUMOS AGRÍCOLAS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Aprovado Gest</td>
+                <td></td>
+            </tr>
+            <tr data-id="37">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110037</a></td>
+                <td>Normal</td>
+                <td>0001037</td>
+                <td>SEMENTE DE SOJA (KG)</td>
+                <td>16/10/2025<br>13:15</td>
+                <td>800,000</td>
+                <td>INSUMOS AGRÍCOLAS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Orçamento Ane</td>
+                <td></td>
+            </tr>
+            <tr data-id="38">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110038</a></td>
+                <td>Baixa</td>
+                <td>0001038</td>
+                <td>FERTILIZANTE NPK 10KG</td>
+                <td>16/10/2025<br>15:00</td>
+                <td>300,000</td>
+                <td>INSUMOS AGRÍCOLAS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Cotação 3 Forn</td>
+                <td><i class="fas fa-file-alt text-success"></i> Cotação</td>
+            </tr>
+            <tr data-id="39">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110039</a></td>
+                <td>Urgente</td>
+                <td>0001039</td>
+                <td>INSETICIDA 1L</td>
+                <td>15/10/2025<br>08:00</td>
+                <td>50,000</td>
+                <td>INSUMOS AGRÍCOLAS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Especificação</td>
+                <td></td>
+            </tr>
+            <tr data-id="40">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110040</a></td>
+                <td>Normal</td>
+                <td>0001040</td>
+                <td>HERBICIDA 1L</td>
+                <td>15/10/2025<br>09:30</td>
+                <td>60,000</td>
+                <td>INSUMOS AGRÍCOLAS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Manual Técnico</td>
+                <td></td>
+            </tr>
+            <tr data-id="41">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110041</a></td>
+                <td>Alta</td>
+                <td>0001041</td>
+                <td>TRATOR AGRÍCOLA - MANUTENÇÃO</td>
+                <td>15/10/2025<br>10:15</td>
+                <td>1,000</td>
+                <td>MANUTENÇÃO DE EQUIPAMENTOS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Solicitação Tha</td>
+                <td><i class="fas fa-file-alt text-success"></i> Urgente</td>
+            </tr>
+            <tr data-id="42">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110042</a></td>
+                <td>Normal</td>
+                <td>0001042</td>
+                <td>COLHEITADEIRA - PEÇAS</td>
+                <td>15/10/2025<br>13:00</td>
+                <td>5,000</td>
+                <td>MANUTENÇÃO DE EQUIPAMENTOS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> REQUISIÇÃO</td>
+                <td></td>
+            </tr>
+            <tr data-id="43">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110043</a></td>
+                <td>Normal</td>
+                <td>0001043</td>
+                <td>ÓLEO LUBRIFICANTE 20L</td>
+                <td>15/10/2025<br>14:30</td>
+                <td>30,000</td>
+                <td>MANUTENÇÃO DE EQUIPAMENTOS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Colonia Guach</td>
+                <td><i class="fas fa-file-alt text-success"></i> Aprovado</td>
+            </tr>
+            <tr data-id="44">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110044</a></td>
+                <td>Urgente</td>
+                <td>0001044</td>
+                <td>FILTRO DE ÓLEO</td>
+                <td>14/10/2025<br>08:15</td>
+                <td>25,000</td>
+                <td>MANUTENÇÃO DE EQUIPAMENTOS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Será usado em</td>
+                <td></td>
+            </tr>
+            <tr data-id="45">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110045</a></td>
+                <td>Normal</td>
+                <td>0001045</td>
+                <td>CORREIA DENTADA</td>
+                <td>14/10/2025<br>09:00</td>
+                <td>15,000</td>
+                <td>MANUTENÇÃO DE EQUIPAMENTOS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Urgente Prod</td>
+                <td></td>
+            </tr>
+            <tr data-id="46">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-a">A</span></td>
+                <td><a href="#" class="req-link">151.110046</a></td>
+                <td>Alta</td>
+                <td>0001046</td>
+                <td>BATERIA 12V 60AH</td>
+                <td>14/10/2025<br>10:30</td>
+                <td>8,000</td>
+                <td>MANUTENÇÃO DE EQUIPAMENTOS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Aprovado Gest</td>
+                <td><i class="fas fa-file-alt text-success"></i> Verificar</td>
+            </tr>
+            <tr data-id="47">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110047</a></td>
+                <td>Normal</td>
+                <td>0001047</td>
+                <td>PNEU AGRÍCOLA 18.4-30</td>
+                <td>14/10/2025<br>13:15</td>
+                <td>4,000</td>
+                <td>MANUTENÇÃO DE EQUIPAMENTOS</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Orçamento Ane</td>
+                <td></td>
+            </tr>
+            <tr data-id="48">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110048</a></td>
+                <td>Baixa</td>
+                <td>0001048</td>
+                <td>SOBREMESA - SORVETE</td>
+                <td>14/10/2025<br>15:00</td>
+                <td>100,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Cotação 3 Forn</td>
+                <td></td>
+            </tr>
+            <tr data-id="49">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-p">P</span></td>
+                <td><a href="#" class="req-link">151.110049</a></td>
+                <td>Urgente</td>
+                <td>0001049</td>
+                <td>VERDURA - ALFACE (KG)</td>
+                <td>13/10/2025<br>08:00</td>
+                <td>50,000</td>
+                <td>SUPRIMEN/EQUIPAMENTOS PARA ALIMENTAÇÃO NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Especificação</td>
+                <td><i class="fas fa-file-alt text-success"></i> Urgente</td>
+            </tr>
+            <tr data-id="50">
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><span class="status-badge status-r">R</span></td>
+                <td><a href="#" class="req-link">151.110050</a></td>
+                <td>Normal</td>
+                <td>0001050</td>
+                <td>TESOURA PODA MANUAL CERCA VIVA CABO DE MADEIRA</td>
+                <td>13/10/2025<br>09:30</td>
+                <td>10,000</td>
+                <td>FERRAMENTAS NA</td>
+                <td><i class="fas fa-paperclip anexo-icon"></i> Manual Técnico</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
         </div>
     </div>
 
